@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- This is needed so that script can be executed -->
+  <!-- <title>HMNAO's Astro Data App</title> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src *;
+    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' astro.ukho.gov.uk;
+    style-src 'self' 'unsafe-inline' *">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+  <link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.datepicker.css" />
+  <!-- jQuery 3 is not yet compatible with jQuery mobile - 2.x is! -->
+  <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+  <script src="js/jquery-2.2.4.min.js"></script>
+  <!-- <script src="js/jqueryOlder/jquery-1.11.1.min.js"></script> -->
+  <script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+  <script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
+
+  <!-- Needed as part of cordova library -->
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- A script that runs after certain parts and DOM have loaded? -->
+  <script type="text/javascript" src="js/onLoad.js"></script>
+
+</head>
+
+<body>
+
+    <div>
+      <h3>Astronomical Data from HMNAO</h3>
+      <form class="params" method="POST">
+        <label id="labelName">Location:</label>
+        <input id="getLocation" type="button" name="getLocation" value="Get Device Location"></input><br>
+        <fieldset class="ui-grid-a sideByside">
+          <div class="ui-block-a">
+            <div>
+              <label id="labelName" for="deviceLocLat">Latitude:</label>
+              <input id="deviceLocLat" type="number" name="deviceLoc" value=""></input>
+            </div>
+          </div>
+          <div class="ui-block-b">
+            <div>
+              <label id="labelName" for="deviceLocLon">Longitude:</label>
+              <input id="deviceLocLon" type="number" name="deviceLoc" value=""></input>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="ui-grid-a sideByside">
+          <div>
+            <label id="labelName" for="dateIn" id="labelSideBySide">Date:</label>
+            <input id="dateIn" type="date" value="">
+          </div>
+          <div>
+            <label id="labelName" for="timeIn" id="labelSideBySide">Time (Standard Time - No Daylight Savings):</label>
+            <input id="timeIn" type="time" data-role="time">
+          </div>
+          <div>
+            <label id="labelName" for="tzIn" id="labelSideBySide">Time Zone:</label>
+            <select id="tzIn" name="timezone">
+                  <optgroup label="List of Timezones">
+                  <option value="-1200">(GMT -12:00) Eniwetok, Kwajalein</option>
+                  <option value="-1100">(GMT -11:00) Midway Island, Samoa</option>
+                  <option value="-1000">(GMT -10:00) Hawaii</option>
+                  <option value="-0930">(GMT -9:30) Marquesas Island</option>
+                  <option value="-0900">(GMT -9:00) Alaska</option>
+                  <option value="-0800">(GMT -8:00) PST (US &amp; Canada)</option>
+                  <option value="-0700">(GMT -7:00) MST (US &amp; Canada)</option>
+                  <option value="-0600">(GMT -6:00) CST (US &amp; Canada)</option>
+                  <option value="-0500">(GMT -5:00) EST (US &amp; Canada)</option>
+                  <option value="-0430">(GMT -4:30) Venezuela</option>
+                  <option value="-0400">(GMT -4:00) Atlantic Time (Canada)</option>
+                  <option value="-0330">(GMT -3:30) Newfoundland</option>
+                  <option value="-0300">(GMT -3:00) Brazil, Buenos Aires</option>
+                  <option value="-0200">(GMT -2:00) Mid-Atlantic</option>
+                  <option value="-0100">(GMT -1:00) Cape Verde Islands</option>
+                  <option value="+0000" selected>(GMT) London</option>
+                  <option value="+0100">(GMT +1:00) Madrid, Paris</option>
+                  <option value="+0200">(GMT +2:00) South Africa</option>
+                  <option value="+0300">(GMT +3:00) Baghdad, Moscow</option>
+                  <option value="+0330">(GMT +3:30) Tehran</option>
+                  <option value="+0400">(GMT +4:00) Abu Dhabi, Muscat</option>
+                  <option value="+0430">(GMT +4:30) Kabul</option>
+                  <option value="+0500">(GMT +5:00) Islamabad, Karachi</option>
+                  <option value="+0530">(GMT +5:30) Bombay, Calcutta</option>
+                  <option value="+0545">(GMT +5:45) Kathmandu</option>
+                  <option value="+0600">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                  <option value="+0700">(GMT +7:00) Bangkok, Hanoi</option>
+                  <option value="+0800">(GMT +8:00) Beijing, Perth</option>
+                  <option value="+0900">(GMT +9:00) Tokyo, Seoul</option>
+                  <option value="+0930">(GMT +9:30) Adelaide, Darwin</option>
+                  <option value="+1000">(GMT +10:00) Eastern Australia</option>
+                  <option value="+1100">(GMT +11:00) Solomon Islands</option>
+                  <option value="+1200">(GMT +12:00) Auckland, Fiji</option>
+                  <option value="+1245">(GMT +12:45) Chatham Islands</option>
+                  <option value="+1300">(GMT +13:00) Phoenix Islands</option>
+                  <option value="+1400">(GMT +14:00) Line Islands</option>
+                  </optgroup>
+                </select><br>
+          </div>
+        </fieldset>
+
+        <div>
+          <input id="almanac" type="button" name="getAlmanac" value="Get Data"></input><br>
+        </div>
+      </form>
+    </div>
+    <!-- end of inputs area -->
+
+    <!-- Take data and populate jquery mobile collapsibles for each object -->
+    <div id="almanac-data">
+      <div data-role="collapsible">
+        <h1 id="obj-sun">Sun</h1>
+        <img id="image-icon-size" src="http://astro.ukho.gov.uk/nao/sun_anim.gif" />
+        <p id="sun-data-standard-time"></p>
+        <p id="sun-data-riseset-twt"></p>
+        <p id="sun-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-moon">Moon</h1>
+        <img src="http://astro.ukho.gov.uk/nao/cropped_moon.jpg" />
+        <p id="moon-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-mercury">Mercury</h1>
+        <img src="http://astro.ukho.gov.uk/nao/mercury_120.jpg" />
+        <p id="mercury-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-venus">Venus</h1>
+        <img src="http://astro.ukho.gov.uk/nao/venus_120.jpg" />
+        <p id="venus-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-mars">Mars</h1>
+        <img src="http://astro.ukho.gov.uk/nao/mars_120.jpg" />
+        <p id="mars-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-jupiter">Jupiter</h1>
+        <img src="http://astro.ukho.gov.uk/nao/jupiter_120.jpg" />
+        <p id="jupiter-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-saturn">Saturn</h1>
+        <img src="http://astro.ukho.gov.uk/nao/saturn_120.jpg" />
+        <p id="saturn-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-uranus">Uranus</h1>
+        <img src="http://astro.ukho.gov.uk/nao/uranus_120.jpg" />
+        <p id="uranus-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-neptune">Neptune</h1>
+        <img src="http://astro.ukho.gov.uk/nao/neptune_120.jpg" />
+        <p id="neptune-data"></p>
+      </div>
+      <div data-role="collapsible">
+        <h1 id="obj-pluto">Pluto</h1>
+        <img src="http://astro.ukho.gov.uk/nao/pluto_120.jpg" />
+        <p id="pluto-data"></p>
+      </div>
+
+    </div>
+    <!-- close almanac-data div -->
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/almanac.js"></script>
+
+  </div>
+  <!-- close allContent div -->
+
+</body>
+
+</html>

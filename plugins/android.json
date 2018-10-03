@@ -1,0 +1,27 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "com.ukho.hmnao.websurfAPI"
+    },
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "com.ukho.hmnao.websurfAPI"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.ukho.hmnao.websurfAPI"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.ukho.hmnao.websurfAPI"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.ukho.hmnao.websurfAPI"
+    }
+  },
+  "dependent_plugins": {}
+}

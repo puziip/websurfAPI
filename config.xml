@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ukho.hmnao.websurfAPI" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Sky High</name>
+    <description>
+      Astronomical data for the Sun, Moon and planets (including Pluto) for a given location, date and time (standard time). Data calculated include right ascension, declination, altitude, azimuth, distance, magnitude and visibility, as well as, sunrise, sunset, civil, nautical and astronomical twilight times.
+      The app and the data it generates are based on HMNAO’s popular Websurf 2.0 service. It can be found here http://astro.ukho.gov.uk/websurf2.
+      This is not an official app from HMNAO or UKHO, its parent organisation.
+      Disclaimer:
+      The material provided here is covered by Crown Copyright and is for personal use only and may not be provided to third parties or shown to the public.
+      The material supplied is used entirely at the recipient's own risk.
+  </description>
+    <author email="paresh.prema@ukho.gov.uk" href="http://astro.ukho.gov.uk">
+    Dr Paresh Prema
+  </author>
+    <content src="index.html" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <access origin="*" />
+    <access origin="http://astro.ukho.gov.uk/" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="http://*/*" />
+    <platform name="android">
+        <icon density="ldpi" src="res/android/mipmap-ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/android/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/android/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="res/android/mipmap-xxxhdpi/ic_launcher.png" />
+    </platform>
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <icon height="180" src="res/ios/AppIcon.appiconset/Icon-App-60x60@3x.png" width="180" />
+        <icon height="60" src="res/ios/AppIcon.appiconset/Icon-App-60x60@1x.png" width="60" />
+        <icon height="120" src="res/ios/AppIcon.appiconset/Icon-App-60x60@2x.png" width="120" />
+        <icon height="76" src="res/ios/AppIcon.appiconset/Icon-App-76x76@1x.png" width="76" />
+        <icon height="152" src="res/ios/AppIcon.appiconset/Icon-App-76x76@2x.png" width="152" />
+        <icon height="40" src="res/ios/AppIcon.appiconset/Icon-App-40x40@1x.png" width="40" />
+        <icon height="80" src="res/ios/AppIcon.appiconset/Icon-App-40x40@2x.png" width="80" />
+        <icon height="57" src="res/ios/AppIcon.appiconset/Icon-App-57x57@1x.png" width="57" />
+        <icon height="114" src="res/ios/AppIcon.appiconset/Icon-App-57x57@2x.png" width="114" />
+        <icon height="72" src="res/ios/AppIcon.appiconset/Icon-App-72x72@1x.png" width="72" />
+        <icon height="144" src="res/ios/AppIcon.appiconset/Icon-App-72x72@2x.png" width="144" />
+        <icon height="167" src="res/ios/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" width="167" />
+        <icon height="29" src="res/ios/AppIcon.appiconset/Icon-App-29x29@1x.png" width="29" />
+        <icon height="58" src="res/ios/AppIcon.appiconset/Icon-App-29x29@2x.png" width="58" />
+        <icon height="50" src="res/ios/AppIcon.appiconset/Icon-Small-50x50@1x.png" width="50" />
+        <icon height="100" src="res/ios/AppIcon.appiconset/Icon-Small-50x50@2x.png" width="100" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <plugin name="cordova-plugin-geolocation" spec="2.3.0" />
+    <plugin name="cordova-plugin-device-motion" spec="^1.2.5" />
+    <plugin name="cordova-plugin-compat" spec="^1.2.0" />
+    <engine name="android" spec="^7.0.0" />
+</widget>
